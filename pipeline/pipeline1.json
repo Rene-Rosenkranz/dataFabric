@@ -25,9 +25,22 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"filePattern": "arrayOfObjects"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
+					{
+						"referenceName": "Workitems",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
 					{
 						"referenceName": "Workitems",
 						"type": "DatasetReference"
