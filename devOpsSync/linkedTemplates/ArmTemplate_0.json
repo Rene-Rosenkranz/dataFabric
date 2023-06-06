@@ -107,7 +107,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "/_apis/wit/workitems?api-version=7.0"
+						"relativeUrl": "/devopssync/_apis/wit/workitems?api-version=7.0"
 					}
 				},
 				"schema": {
