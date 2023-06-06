@@ -1,0 +1,15 @@
+{
+	"name": "HttpServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://dev.azure.com/renerosenkranztt0058",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "tewst",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDlEMkEzQUM0LTUyRUQtNDdBMS1CNEI0LUI2OTA2Njc1OUU2OV82Y2RkYWVjOC05N2IzLTRlNDYtYjVmMC0zYTkzNGNlMDFlYmYiDQp9"
+		}
+	}
+}
