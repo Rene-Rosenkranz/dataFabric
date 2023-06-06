@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "devOpsSync"
+		},
+		"Azure DevOps_password": {
+			"value": ""
+		},
+		"HttpServer1_password": {
+			"value": ""
+		},
+		"ThesisDB_connectionString": {
+			"value": ""
+		},
+		"Azure DevOps_properties_typeProperties_url": {
+			"value": "https://dev.azure.com/renerosenkranztt0058"
+		},
+		"Azure DevOps_properties_typeProperties_userName": {
+			"value": "tset"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://dev.azure.com/renerosenkranztt0058"
+		},
+		"HttpServer1_properties_typeProperties_userName": {
+			"value": "tewst"
+		}
+	}
+}

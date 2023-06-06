@@ -1,0 +1,342 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "devOpsSync"
+		},
+		"Azure DevOps_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Azure DevOps'"
+		},
+		"HttpServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'HttpServer1'"
+		},
+		"ThesisDB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ThesisDB'"
+		},
+		"Azure DevOps_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dev.azure.com/renerosenkranztt0058"
+		},
+		"Azure DevOps_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tset"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dev.azure.com/renerosenkranztt0058"
+		},
+		"HttpServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tewst"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Azure DevOps')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('Azure DevOps_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('Azure DevOps_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Azure DevOps_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('HttpServer1_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('HttpServer1_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('HttpServer1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ThesisDB')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('ThesisDB_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Workitems')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Azure DevOps",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "/_apis/wit/workitems?api-version=7.0"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"count": {
+							"type": "integer"
+						},
+						"value": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "integer"
+									},
+									"rev": {
+										"type": "integer"
+									},
+									"fields": {
+										"type": "object",
+										"properties": {
+											"System.AreaPath": {
+												"type": "string"
+											},
+											"System.TeamProject": {
+												"type": "string"
+											},
+											"System.IterationPath": {
+												"type": "string"
+											},
+											"System.WorkItemType": {
+												"type": "string"
+											},
+											"System.State": {
+												"type": "string"
+											},
+											"System.Reason": {
+												"type": "string"
+											},
+											"System.CreatedDate": {
+												"type": "string"
+											},
+											"System.CreatedBy": {
+												"type": "object",
+												"properties": {
+													"displayName": {
+														"type": "string"
+													},
+													"url": {
+														"type": "string"
+													},
+													"_links": {
+														"type": "object",
+														"properties": {
+															"avatar": {
+																"type": "object",
+																"properties": {
+																	"href": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													},
+													"id": {
+														"type": "string"
+													},
+													"uniqueName": {
+														"type": "string"
+													},
+													"imageUrl": {
+														"type": "string"
+													},
+													"descriptor": {
+														"type": "string"
+													}
+												}
+											},
+											"System.ChangedDate": {
+												"type": "string"
+											},
+											"System.ChangedBy": {
+												"type": "object",
+												"properties": {
+													"displayName": {
+														"type": "string"
+													},
+													"url": {
+														"type": "string"
+													},
+													"_links": {
+														"type": "object",
+														"properties": {
+															"avatar": {
+																"type": "object",
+																"properties": {
+																	"href": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													},
+													"id": {
+														"type": "string"
+													},
+													"uniqueName": {
+														"type": "string"
+													},
+													"imageUrl": {
+														"type": "string"
+													},
+													"descriptor": {
+														"type": "string"
+													}
+												}
+											},
+											"System.Title": {
+												"type": "string"
+											},
+											"Microsoft.VSTS.Scheduling.Effort": {
+												"type": "integer"
+											},
+											"WEF_6CB513B6E70E43499D9FC94E5BBFB784_Kanban.Column": {
+												"type": "string"
+											},
+											"System.Description": {
+												"type": "string"
+											}
+										}
+									},
+									"url": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Azure DevOps')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SqlServerTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ThesisDB",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "DevOps",
+					"table": "WorkItem"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ThesisDB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy Workitems",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SqlServerSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate"
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "Workitems",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlServerTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Workitems')]",
+				"[concat(variables('factoryId'), '/datasets/SqlServerTable1')]"
+			]
+		}
+	]
+}
