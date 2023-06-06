@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://dev.azure.com/renerosenkranztt0058",
+			"url": "https://dev.azure.com/renerosenkranztt0058/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Basic",
 			"userName": "tset",
