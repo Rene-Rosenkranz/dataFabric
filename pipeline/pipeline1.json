@@ -19,7 +19,8 @@
 						"type": "JsonSource",
 						"storeSettings": {
 							"type": "HttpReadSettings",
-							"requestMethod": "GET",
+							"requestMethod": "POST",
+							"requestBody": "{\n  \"query\": \"SELECT [Id] from WorkItems\"\n}\n",
 							"requestTimeout": ""
 						},
 						"formatSettings": {
