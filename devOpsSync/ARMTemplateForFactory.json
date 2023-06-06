@@ -118,8 +118,7 @@
 				"type": "Json",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": "/devopssync/_apis/wit/wiql?api-version=6.0"
+						"type": "HttpServerLocation"
 					}
 				},
 				"schema": {
