@@ -298,7 +298,7 @@
 								"storeSettings": {
 									"type": "HttpReadSettings",
 									"requestMethod": "POST",
-									"requestBody": "{\n  \"query\": \"SELECT [Id] from WorkItems\"\n}\n",
+									"requestBody": "{\n  \"query\": \"SELECT * from WorkItems\"\n}\n",
 									"requestTimeout": ""
 								},
 								"formatSettings": {
