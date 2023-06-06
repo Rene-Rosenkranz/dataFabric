@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "devOpsSync"
 		},
-		"Azure DevOps_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Azure DevOps'"
-		},
 		"HttpServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'HttpServer1'"
@@ -19,13 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ThesisDB'"
 		},
-		"Azure DevOps_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://dev.azure.com/renerosenkranztt0058"
-		},
-		"Azure DevOps_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "tset"
+		"Azure DevOps_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Azure DevOps'"
 		},
 		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
@@ -34,6 +26,14 @@
 		"HttpServer1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "tewst"
+		},
+		"Azure DevOps_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dev.azure.com/renerosenkranztt0058/"
+		},
+		"Azure DevOps_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tset"
 		},
 		"containerUri": {
 			"type": "string",
@@ -62,26 +62,26 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"Azure DevOps_password": {
-						"value": "[parameters('Azure DevOps_password')]"
-					},
 					"HttpServer1_password": {
 						"value": "[parameters('HttpServer1_password')]"
 					},
 					"ThesisDB_connectionString": {
 						"value": "[parameters('ThesisDB_connectionString')]"
 					},
-					"Azure DevOps_properties_typeProperties_url": {
-						"value": "[parameters('Azure DevOps_properties_typeProperties_url')]"
-					},
-					"Azure DevOps_properties_typeProperties_userName": {
-						"value": "[parameters('Azure DevOps_properties_typeProperties_userName')]"
+					"Azure DevOps_password": {
+						"value": "[parameters('Azure DevOps_password')]"
 					},
 					"HttpServer1_properties_typeProperties_url": {
 						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
 					},
 					"HttpServer1_properties_typeProperties_userName": {
 						"value": "[parameters('HttpServer1_properties_typeProperties_userName')]"
+					},
+					"Azure DevOps_properties_typeProperties_url": {
+						"value": "[parameters('Azure DevOps_properties_typeProperties_url')]"
+					},
+					"Azure DevOps_properties_typeProperties_userName": {
+						"value": "[parameters('Azure DevOps_properties_typeProperties_userName')]"
 					}
 				}
 			},

@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "devOpsSync"
 		},
-		"Azure DevOps_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Azure DevOps'"
-		},
 		"HttpServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'HttpServer1'"
@@ -19,13 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ThesisDB'"
 		},
-		"Azure DevOps_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://dev.azure.com/renerosenkranztt0058"
-		},
-		"Azure DevOps_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "tset"
+		"Azure DevOps_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Azure DevOps'"
 		},
 		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
@@ -34,6 +26,14 @@
 		"HttpServer1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "tewst"
+		},
+		"Azure DevOps_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dev.azure.com/renerosenkranztt0058/"
+		},
+		"Azure DevOps_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tset"
 		}
 	},
 	"variables": {
@@ -266,26 +266,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Azure DevOps')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('Azure DevOps_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Basic",
-					"userName": "[parameters('Azure DevOps_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('Azure DevOps_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -338,6 +318,26 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ThesisDB')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Azure DevOps')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('Azure DevOps_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('Azure DevOps_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Azure DevOps_password')]"
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
