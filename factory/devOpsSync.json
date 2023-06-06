@@ -1,0 +1,9 @@
+{
+	"name": "devOpsSync",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "88e8cc8d-d713-4ec4-ac32-501f4c86dbb4",
+		"tenantId": "f02fd462-4b88-4bc5-8de7-705b76ea8660"
+	}
+}
