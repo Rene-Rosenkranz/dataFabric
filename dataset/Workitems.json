@@ -13,6 +13,143 @@
 				"relativeUrl": "/_apis/wit/workitems?api-version=7.0"
 			}
 		},
-		"schema": {}
+		"schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer"
+				},
+				"value": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"rev": {
+								"type": "integer"
+							},
+							"fields": {
+								"type": "object",
+								"properties": {
+									"System.AreaPath": {
+										"type": "string"
+									},
+									"System.TeamProject": {
+										"type": "string"
+									},
+									"System.IterationPath": {
+										"type": "string"
+									},
+									"System.WorkItemType": {
+										"type": "string"
+									},
+									"System.State": {
+										"type": "string"
+									},
+									"System.Reason": {
+										"type": "string"
+									},
+									"System.CreatedDate": {
+										"type": "string"
+									},
+									"System.CreatedBy": {
+										"type": "object",
+										"properties": {
+											"displayName": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string"
+											},
+											"_links": {
+												"type": "object",
+												"properties": {
+													"avatar": {
+														"type": "object",
+														"properties": {
+															"href": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											},
+											"id": {
+												"type": "string"
+											},
+											"uniqueName": {
+												"type": "string"
+											},
+											"imageUrl": {
+												"type": "string"
+											},
+											"descriptor": {
+												"type": "string"
+											}
+										}
+									},
+									"System.ChangedDate": {
+										"type": "string"
+									},
+									"System.ChangedBy": {
+										"type": "object",
+										"properties": {
+											"displayName": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string"
+											},
+											"_links": {
+												"type": "object",
+												"properties": {
+													"avatar": {
+														"type": "object",
+														"properties": {
+															"href": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											},
+											"id": {
+												"type": "string"
+											},
+											"uniqueName": {
+												"type": "string"
+											},
+											"imageUrl": {
+												"type": "string"
+											},
+											"descriptor": {
+												"type": "string"
+											}
+										}
+									},
+									"System.Title": {
+										"type": "string"
+									},
+									"Microsoft.VSTS.Scheduling.Effort": {
+										"type": "integer"
+									},
+									"WEF_6CB513B6E70E43499D9FC94E5BBFB784_Kanban.Column": {
+										"type": "string"
+									},
+									"System.Description": {
+										"type": "string"
+									}
+								}
+							},
+							"url": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
