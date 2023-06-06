@@ -297,7 +297,8 @@
 								"type": "JsonSource",
 								"storeSettings": {
 									"type": "HttpReadSettings",
-									"requestMethod": "GET"
+									"requestMethod": "GET",
+									"requestTimeout": ""
 								},
 								"formatSettings": {
 									"type": "JsonReadSettings"
