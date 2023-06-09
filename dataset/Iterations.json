@@ -1,0 +1,57 @@
+{
+	"name": "Iterations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ThesisDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "IterationID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "IterationName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "OrganisationID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "IterationPath",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StartDate",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "FinishDate",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "EntityCreatedAt",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "EntityModifiedAt",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "DevOps",
+			"table": "Iteration"
+		}
+	}
+}
