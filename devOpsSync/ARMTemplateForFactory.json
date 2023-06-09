@@ -59,7 +59,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"url": "https://dev.azure.com/renerosenkranztt0058/devopssync/_apis/work/teamsettings/iterations?api-version=7.0'",
+							"url": "https://dev.azure.com/renerosenkranztt0058/devopssync/_apis/work/teamsettings/iterations?api-version=7.0",
 							"method": "GET",
 							"headers": {
 								"Authorization": "Basic dGVzdDpyZ2FvZGlob2kyNm1ydml6b3kycWd0bzV5ZzJ3eGVwa2d4bnV6ZnU0YmxvNWljaGYyNXVh"
