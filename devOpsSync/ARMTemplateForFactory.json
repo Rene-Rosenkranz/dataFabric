@@ -47,8 +47,8 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy Workitems",
-						"type": "Copy",
+						"name": "GetIterations",
+						"type": "WebActivity",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
@@ -59,40 +59,12 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "JsonSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "POST",
-									"requestBody": "{\n  \"query\": \"SELECT * from WorkItems\"\n}\n",
-									"requestTimeout": ""
-								},
-								"formatSettings": {
-									"type": "JsonReadSettings"
-								}
-							},
-							"sink": {
-								"type": "SqlServerSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false,
-								"tableOption": "autoCreate"
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "Workitems",
-								"type": "DatasetReference",
-								"parameters": {}
+							"url": "https://dev.azure.com/renerosenkranztt0058/devopssync/_apis/work/teamsettings/iterations?api-version=7.0'",
+							"method": "GET",
+							"headers": {
+								"Authorization": "Basic dGVzdDpyZ2FvZGlob2kyNm1ydml6b3kycWd0bzV5ZzJ3eGVwa2d4bnV6ZnU0YmxvNWljaGYyNXVh"
 							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SqlServerTable1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
+						}
 					}
 				],
 				"policy": {
@@ -101,10 +73,7 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Workitems')]",
-				"[concat(variables('factoryId'), '/datasets/SqlServerTable1')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SqlServerTable1')]",
