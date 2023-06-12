@@ -3,36 +3,9 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "GetIterations",
-				"type": "WebActivity",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://dev.azure.com/renerosenkranztt0058/devopssync/_apis/work/teamsettings/iterations?api-version=7.0",
-					"method": "GET",
-					"headers": {
-						"Authorization": "Basic dGVzdDpyZ2FvZGlob2kyNm1ydml6b3kycWd0bzV5ZzJ3eGVwa2d4bnV6ZnU0YmxvNWljaGYyNXVh"
-					}
-				}
-			},
-			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "GetIterations",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -81,16 +54,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"iterations": {
-				"type": "array"
-			}
-		},
-		"variables": {
-			"iterations": {
-				"type": "Array"
-			}
-		},
 		"annotations": []
 	}
 }
