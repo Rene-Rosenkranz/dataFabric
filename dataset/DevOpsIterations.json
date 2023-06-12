@@ -1,0 +1,48 @@
+{
+	"name": "DevOpsIterations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure DevOps",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "devopssync/_apis/work/teamsettings/iterations?api-version=7.0"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"path": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"startDate": {
+							"type": "string"
+						},
+						"finishDate": {
+							"type": "string"
+						},
+						"timeFrame": {
+							"type": "string"
+						}
+					}
+				},
+				"url": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
