@@ -44,11 +44,6 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['count']"
-								}
-							},
-							{
-								"source": {
 									"path": "$['value'][0]['id']"
 								},
 								"sink": {
@@ -92,7 +87,8 @@
 									"type": "DateTime"
 								}
 							}
-						]
+						],
+						"collectionReference": "$['value']"
 					}
 				},
 				"inputs": [
