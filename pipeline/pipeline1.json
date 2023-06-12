@@ -44,7 +44,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "id"
+									"path": "['id']"
 								},
 								"sink": {
 									"name": "IterationID",
@@ -53,7 +53,7 @@
 							},
 							{
 								"source": {
-									"path": "name"
+									"path": "['name']"
 								},
 								"sink": {
 									"name": "IterationName",
@@ -62,7 +62,7 @@
 							},
 							{
 								"source": {
-									"path": "path"
+									"path": "['path']"
 								},
 								"sink": {
 									"name": "IterationPath",
@@ -71,7 +71,7 @@
 							},
 							{
 								"source": {
-									"path": "attributes.startDate"
+									"path": "['attributes']['startDate']"
 								},
 								"sink": {
 									"name": "StartDate",
@@ -80,11 +80,29 @@
 							},
 							{
 								"source": {
-									"path": "attributes.finishDate"
+									"path": "['attributes']['finishDate']"
 								},
 								"sink": {
 									"name": "FinishDate",
 									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['@{pipeline().parameters.OrganisationID}']"
+								},
+								"sink": {
+									"name": "OrganisationID",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['@{pipeline().parameters.ProjectID}']"
+								},
+								"sink": {
+									"name": "ProjectID",
+									"type": "Guid"
 								}
 							}
 						],
