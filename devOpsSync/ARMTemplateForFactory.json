@@ -82,7 +82,58 @@
 								},
 								"sqlWriterUseTableLock": false
 							},
-							"enableStaging": false
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['value'][0]['id']"
+										},
+										"sink": {
+											"name": "IterationID",
+											"type": "Guid"
+										}
+									},
+									{
+										"source": {
+											"path": "$['value'][0]['name']"
+										},
+										"sink": {
+											"name": "IterationName",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['value'][0]['path']"
+										},
+										"sink": {
+											"name": "IterationPath",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['value'][0]['attributes']['startDate']"
+										},
+										"sink": {
+											"name": "StartDate",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"path": "$['value'][0]['attributes']['finishDate']"
+										},
+										"sink": {
+											"name": "FinishDate",
+											"type": "DateTime"
+										}
+									}
+								],
+								"collectionReference": "$['value']"
+							}
 						},
 						"inputs": [
 							{
