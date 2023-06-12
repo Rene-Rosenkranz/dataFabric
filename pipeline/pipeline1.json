@@ -44,7 +44,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['value']['id']"
+									"path": "id"
 								},
 								"sink": {
 									"name": "IterationID",
@@ -53,7 +53,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value']['name']"
+									"path": "name"
 								},
 								"sink": {
 									"name": "IterationName",
@@ -62,7 +62,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value']['path']"
+									"path": "path"
 								},
 								"sink": {
 									"name": "IterationPath",
@@ -71,7 +71,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value']['attributes']['startDate']"
+									"path": "attributes.startDate"
 								},
 								"sink": {
 									"name": "StartDate",
@@ -80,7 +80,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value']['attributes']['finishDate']"
+									"path": "attributes.finishDate"
 								},
 								"sink": {
 									"name": "FinishDate",
