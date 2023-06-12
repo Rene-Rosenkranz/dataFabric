@@ -37,7 +37,7 @@
 							]
 						},
 						"sqlWriterUseTableLock": false,
-						"postCopyScript": "UPDATE [Thesis].[DevOps].[Iteration] SET OrganisationID = '@{pipeline().parameters.OrganisationID}', ProjectID = '@{pipeline().parameters.ProjectID}'"
+						"postCopyScript": "UPDATE [Thesis].[DevOps].[Iteration] SET OrganisationID = '1B18FBA1-DA82-4EE9-9181-AAFC22CFC347', ProjectID = '7251CB26-EC19-4E0C-9C48-E7F566564882'"
 					},
 					"enableStaging": false,
 					"translator": {
