@@ -65,15 +65,150 @@
 								"Authorization": "Basic dGVzdDpyZ2FvZGlob2kyNm1ydml6b3kycWd0bzV5ZzJ3eGVwa2d4bnV6ZnU0YmxvNWljaGYyNXVh"
 							}
 						}
+					},
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "GetIterations",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"additionalHeaders": "Authorization: Basic dGVzdDpyZ2FvZGlob2kyNm1ydml6b3kycWd0bzV5ZzJ3eGVwa2d4bnV6ZnU0YmxvNWljaGYyNXVh",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SqlServerSink",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"IterationID"
+									]
+								},
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DevOpsIterations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Iterations",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"parameters": {
+					"iterations": {
+						"type": "array"
+					}
+				},
+				"variables": {
+					"iterations": {
+						"type": "Array"
+					}
+				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DevOpsIterations')]",
+				"[concat(variables('factoryId'), '/datasets/Iterations')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Iterations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ThesisDB",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "IterationID",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "IterationName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProjectID",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "OrganisationID",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "IterationPath",
+						"type": "nvarchar"
+					},
+					{
+						"name": "StartDate",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "FinishDate",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "EntityCreatedAt",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "EntityModifiedAt",
+						"type": "datetime2",
+						"scale": 7
+					}
+				],
+				"typeProperties": {
+					"schema": "DevOps",
+					"table": "Iteration"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ThesisDB')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SqlServerTable1')]",
@@ -308,6 +443,59 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DevOpsIterations')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Azure DevOps",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "devopssync/_apis/work/teamsettings/iterations?api-version=7.0"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"path": {
+							"type": "string"
+						},
+						"attributes": {
+							"type": "object",
+							"properties": {
+								"startDate": {
+									"type": "string"
+								},
+								"finishDate": {
+									"type": "string"
+								},
+								"timeFrame": {
+									"type": "string"
+								}
+							}
+						},
+						"url": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Azure DevOps')]"
+			]
 		}
 	]
 }
