@@ -36,7 +36,8 @@
 								"IterationID"
 							]
 						},
-						"sqlWriterUseTableLock": false
+						"sqlWriterUseTableLock": false,
+						"postCopyScript": "UPDATE [Thesis].[DevOps].[Iteration] SET OrganisationID = '@{pipeline().parameters.OrganisationID}', ProjectID = '@{pipeline().parameters.ProjectID}'"
 					},
 					"enableStaging": false,
 					"translator": {
