@@ -90,20 +90,10 @@
 							},
 							{
 								"source": {
-									"type": "Expression"
+									"path": "$['Column_1']"
 								},
 								"sink": {
-									"name": "OrganisationID",
-									"type": "Guid"
-								}
-							},
-							{
-								"source": {
-									"type": "Expression"
-								},
-								"sink": {
-									"name": "ProjectID",
-									"type": "Guid"
+									"name": "OrganisationID"
 								}
 							}
 						],
