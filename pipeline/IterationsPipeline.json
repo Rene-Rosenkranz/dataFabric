@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "IterationsPipeline",
 	"properties": {
 		"activities": [
 			{
@@ -90,7 +90,7 @@
 							},
 							{
 								"source": {
-									"path": "$['@{pipeline().parameters.OrganisationID}']"
+									"type": "Expression"
 								},
 								"sink": {
 									"name": "OrganisationID",
@@ -99,7 +99,7 @@
 							},
 							{
 								"source": {
-									"path": "$['@{pipeline().parameters.ProjectID}']"
+									"type": "Expression"
 								},
 								"sink": {
 									"name": "ProjectID",
@@ -124,16 +124,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"OrganisationID": {
-				"type": "string",
-				"defaultValue": "1B18FBA1-DA82-4EE9-9181-AAFC22CFC347"
-			},
-			"ProjectID": {
-				"type": "string",
-				"defaultValue": "7251CB26-EC19-4E0C-9C48-E7F566564882"
-			}
-		},
 		"annotations": []
 	}
 }
